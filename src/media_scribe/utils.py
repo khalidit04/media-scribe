@@ -1,3 +1,6 @@
+"""
+Execution utilities including timeout decorators.
+"""
 import functools
 import concurrent.futures
 from media_scribe.exceptions import TranscriptionTimeoutError
@@ -15,10 +18,10 @@ def timeout(seconds: int):
                 future = executor.submit(func, *args, **kwargs)
                 try:
                     return future.result(timeout=seconds)
-                except concurrent.futures.TimeoutError:
+                except concurrent.futures.TimeoutError as exc:
                     # Reraise as our custom timeout error
                     raise TranscriptionTimeoutError(
                         f"Execution of {func.__name__} timed out after {seconds} seconds."
-                    )
+                    ) from exc
         return wrapper
     return decorator

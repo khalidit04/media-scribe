@@ -6,8 +6,10 @@ import mlx_whisper
 from typing import Dict, Any
 from media_scribe.logger import logger
 from media_scribe.schemas import MediaScribeResult, TranscriptSegment
+from media_scribe.utils import timeout
 
-def transcribe_audio(file_path: str, model_path: str = "mlx-community/whisper-tiny-mlx") -> MediaScribeResult:
+@timeout(600)
+def transcribe_audio(file_path: str, model_path: str = "mlx-community/whisper-small-mlx") -> MediaScribeResult:
     """
     Transcribes an audio file using MLX-Whisper and returns a typed MediaScribeResult.
     Using 'whisper-tiny-mlx' by default for blazing fast unit testing, but 'whisper-base-mlx' 

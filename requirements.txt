@@ -3,3 +3,6 @@ pydantic
 structlog
 mlx-whisper
 pytest
+noisereduce
+scipy
+soundfile

@@ -11,11 +11,11 @@
 - [x] Write Integration test mocking a small `.mp4` into transcript
 
 ## Phase 2: Refinement (Noise Control & Error Handling)
-- [ ] Install and wrap `noisereduce` logic around extracted audio arrays pre-transcription
-- [ ] Fine-tune inference params (`condition_on_previous_text=False`) against hallucinatory repeats
-- [ ] Abstract code into rigorous Try/Except wrapper classes
-- [ ] Add `@timeout` mechanisms to stall sub-processes
-- [ ] Write Unit and Integration tests for memory bounds and timeouts
+- [x] Install and wrap `noisereduce` logic around extracted audio arrays pre-transcription
+- [x] Fine-tune inference params (`condition_on_previous_text=False`) against hallucinatory repeats
+- [x] Abstract code into rigorous Try/Except wrapper classes
+- [x] Add `@timeout` mechanisms to stall sub-processes
+- [x] Write Unit and Integration tests for memory bounds and timeouts
 
 ## Phase 3: Future Analysis Data Pipelines (Schema Finalization)
 - [ ] Add word-level timings and performance metrics into existing models

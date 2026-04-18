@@ -25,8 +25,29 @@ pip install -r requirements.txt
 ## Quickstart
 
 ```python
-# Coming Soon: Basic usage examples will be added here 
-# as the pipeline implementation is completed.
+from media_scribe.core import process_media
+
+# Run the end-to-end extraction and transcription pipeline
+result = process_media(
+    file_path="video.mp4",
+    
+    # [Optional] Defaults to 'mlx-community/whisper-small-mlx'. 
+    # Use 'mlx-community/whisper-large-v3-mlx' for state-of-the-art Arabic/Urdu accuracy.
+    model_size="mlx-community/whisper-small-mlx", 
+    
+    # [Optional] Defaults to False. 
+    # Set to True to mathematically remove background static/hum before transcription!
+    clean_audio=True 
+)
+
+# The pipeline returns a strictly typed Pydantic object with rich metadata:
+print(f"Detected Language: {result.detected_language}")
+print(f"Total Audio Duration: {result.duration_seconds}s")
+print(f"Total Processing Time: {result.processing_time_ms}ms")
+
+# Access the full block of text, or iterate over result.segments for precise timings
+print("\nTranscript:")
+print(result.full_text)
 ```
 
 ## Contributing

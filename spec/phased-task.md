@@ -18,9 +18,8 @@
 - [x] Write Unit and Integration tests for memory bounds and timeouts
 
 ## Phase 3: Future Analysis Data Pipelines (Schema Finalization)
-- [ ] Add word-level timings and performance metrics into existing models
-- [ ] Formally setup `.json` log dumps and DB ingestible schema serializers
-- [ ] Write schema integrity unit tests
+- [x] Formally setup `.json` log dumps and DB ingestible schema serializers
+- [x] Write schema integrity unit tests
 
 ## Phase 4: Summarization & Translation Plugins (Extensions) 
 - [ ] Integrate local `ollama` endpoints and LLaMA 3.2 summarization prompts 

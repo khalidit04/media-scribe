@@ -38,3 +38,14 @@ def process_media(file_path: str, model_size: str = "mlx-community/whisper-small
             logger.info("Cleaned up temporary denoised wav file", wav_path=cleaned_wav_path)
             
     return result
+
+def export_to_json(result: MediaScribeResult, output_path: str) -> str:
+    """
+    Serializes securely typed JSON to the given path for future downstream parsing.
+    Returns the path to the generated JSON file.
+    """
+    with open(output_path, "w", encoding="utf-8") as f:
+        f.write(result.model_dump_json(indent=2))
+        
+    logger.info("JSON file exported", output_path=output_path)
+    return output_path

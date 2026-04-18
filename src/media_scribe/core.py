@@ -6,10 +6,13 @@ from media_scribe.extractor import extract_audio
 from media_scribe.cleaner import apply_noise_reduction
 from media_scribe.transcriber import transcribe_audio
 from media_scribe.schemas import MediaScribeResult
+from media_scribe.plugins import BaseNLPProvider, OllamaProvider
 from media_scribe.logger import logger
 
 def process_media(file_path: str, model_size: str = "mlx-community/whisper-small-mlx",
-                  clean_audio: bool = False) -> MediaScribeResult:
+                  clean_audio: bool = False, summarize: bool = False,
+                  translation_lang: str = None,
+                  nlp_provider: BaseNLPProvider = None) -> MediaScribeResult: # pylint: disable=too-many-arguments, too-many-positional-arguments
     """
     End-to-end pipeline: Extracts audio from ANY media file and runs it through MLX Whisper.
     """
@@ -28,6 +31,16 @@ def process_media(file_path: str, model_size: str = "mlx-community/whisper-small
 
         # 2. Transcribe
         result = transcribe_audio(target_wav, model_path=model_size)
+
+        # 3. Handle Extensions (Summarization & Translation)
+        if summarize or translation_lang:
+            # Use provided provider or default to Ollama
+            provider = nlp_provider or OllamaProvider()
+
+            if summarize:
+                result.summary = provider.summarize(result.full_text)
+            if translation_lang:
+                result.target_translation = provider.translate(result.full_text, translation_lang)
     finally:
         # Clean up temporary extracted WAV if we generated one
         if wav_path != file_path and os.path.exists(wav_path):

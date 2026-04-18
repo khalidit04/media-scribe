@@ -8,3 +8,4 @@ noisereduce
 scipy
 soundfile
 pylint
+requests

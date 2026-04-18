@@ -22,6 +22,6 @@
 - [x] Write schema integrity unit tests
 
 ## Phase 4: Summarization & Translation Plugins (Extensions) 
-- [ ] Integrate local `ollama` endpoints and LLaMA 3.2 summarization prompts 
-- [ ] Implement `translation` mechanisms
-- [ ] Validate Ollama data mappings using integration tests
+- [x] Integrate local `ollama` endpoints and LLaMA 3.2 summarization prompts 
+- [x] Implement `translation` mechanisms
+- [x] Validate Ollama data mappings using integration tests

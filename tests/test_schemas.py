@@ -1,8 +1,12 @@
+"""
+Tests for result schemas and serialization.
+"""
 import os
 from media_scribe.schemas import MediaScribeResult, TranscriptSegment
 from media_scribe.core import export_to_json
 
 def test_json_export(tmp_path):
+    """Test that MediaScribeResult can be serialized to a JSON file."""
     result = MediaScribeResult(
         file_id="test.mp4",
         original_format="mp4",
@@ -18,11 +22,11 @@ def test_json_export(tmp_path):
         ],
         processing_time_ms=100
     )
-    
+
     output_file = tmp_path / "output.json"
     export_to_json(result, str(output_file))
-    
+
     assert os.path.exists(output_file)
-    with open(output_file, "r") as f:
+    with open(output_file, "r", encoding="utf-8") as f:
         content = f.read()
         assert "Hello world." in content

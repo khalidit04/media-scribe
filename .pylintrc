@@ -1,13 +1,14 @@
 [MASTER]
 # Ignore the virtual environment directory
-ignore=venv,tests
+ignore=venv
 
 # Add src to the path so pylint can find the media_scribe package
 init-hook='import sys; sys.path.append("src")'
 
 [MESSAGES CONTROL]
 # Disable some messages globally
-# disable=C0114,C0115
+# R0903: too-few-public-methods (Targeting Pydantic models)
+disable=R0903
 
 [FORMAT]
 max-line-length=100

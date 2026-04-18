@@ -20,13 +20,13 @@ def extract_audio(input_file: str, output_file: str = None, sample_rate: int = 1
         output_file = f"{base}_extracted.wav"
 
     logger.info("Extracting audio...", input_file=input_file, output_file=output_file)
-    
+
     try:
         # We enforce 1 channel (mono) and standard whisper sample rate
         stream = ffmpeg.input(input_file)
         stream = ffmpeg.output(stream, output_file, ac=1, ar=sample_rate, loglevel="error")
         ffmpeg.run(stream, overwrite_output=True)
-        
+
         logger.info("Audio extracted successfully", output_file=output_file)
         return output_file
     except ffmpeg.Error as e:

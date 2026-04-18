@@ -50,6 +50,19 @@ pip install -r requirements.txt
 
 *(Note: Once published, installation will be a simple `pip install media-scribe`)*
 
+## Quality Assurance & Linting
+
+This project adheres to a strict 10/10 `pylint` score for code quality and PEP8 standards. 
+
+To run the linter locally:
+```bash
+# Ensure pylint is installed
+pip install pylint
+
+# Run linting on the source code
+pylint src/media_scribe
+```
+
 ## Quickstart
 
 ```python

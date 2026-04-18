@@ -1,3 +1,6 @@
+"""
+Standard logging setup for MediaScribe using structlog.
+"""
 import structlog
 
 def configure_logger():

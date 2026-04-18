@@ -1,0 +1,5 @@
+ffmpeg-python
+pydantic
+structlog
+mlx-whisper
+pytest
